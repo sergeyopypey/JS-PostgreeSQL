@@ -14,14 +14,14 @@ class LicenseController {
 
     async getOneLicense(req, res) {
         const id = req.params.id
-        const users = await db.query('SELECT * FROM person where id = $1', [id])
+        const users = await db.query('SELECT * FROM license where id = $1', [id])
         res.json(user.rows[0])
     }
 
     async updateLicense(req, res) {    
         const {id, name, surname} = req.body
         const user = await db.query(
-            'UPDATE person set name = $1, surname = $2 where id = $3 RETURNING *',
+            'UPDATE license set name = $1, surname = $2 where id = $3 RETURNING *',
             [name, surname, id]
         )
         res.json(user.rows[0])
@@ -29,7 +29,7 @@ class LicenseController {
 
     async deleteLicense(req, res) {
         const id = req.params.id
-        const users = await db.query('DELETE FROM person where id = $1', [id])
+        const users = await db.query('DELETE FROM license where id = $1', [id])
         //res.json('User with id = $1 deleted', [id])
         console.log('User with id = $1 deleted', [id])
     }
