@@ -1,0 +1,26 @@
+INSTALLATION DIRECTORY: C:\Program Files\PostgreSQL\15
+DATA DIRECTORY: C:\Program Files\PostgreSQL\15\data
+PASSWORD: 1234
+PORT: 7777
+DATABASE CLUSTER: Russian, Russia
+
+create table license(
+	id SERIAL PRIMARY KEY,
+	title VARCHAR(255),
+	lic_number INTEGER,
+	author VARCHAR(255),
+	lic_owner VARCHAR(255),
+	inspired_date DATE,
+	recieved_date DATE,
+	user_id INTEGER
+)
+
+
+const pg = require('pg')
+const pool = new pg.Pool({
+    user: "postgres", // user which you autentificate in PSQL
+    password: '1234', // password from my database
+    host: "localhost", // type of the host where databases placed (?)
+    port: 7777, // port of your databases ( setted due installing )
+    database: "license_db" // name of your databases ( by default exists database with name = postgres )
+})
