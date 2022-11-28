@@ -4,9 +4,7 @@ const userRouter = require('./routes/user.routes')
 const licenseRouter = require('./routes/license.routes')
 const PORT = process.env.PORT  || 8888
 const app = express()
-// app.get('/', (req, res) => {
-//     res.send('HELLO!!!')
-// })
+
 app.use(
     cors({
         origin: "*"
