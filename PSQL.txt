@@ -10,9 +10,20 @@ create table license(
 	lic_number INTEGER,
 	author VARCHAR(255),
 	lic_owner VARCHAR(255),
-	inspired_date DATE,
+	expiration_date DATE,
 	recieved_date DATE,
-	user_id INTEGER
+	creating_date DATE,
+	user_id INTEGER,
+	FOREIGN KEY (user_id) REFERENCES users (id)
+)
+
+create table users(
+	id SERIAL PRIMARY KEY,
+	user_name VARCHAR(255),
+	department VARCHAR(255),
+	email VARCHAR(255),
+	creating_date DATE,
+	user_password VARCHAR(255)
 )
 
 
