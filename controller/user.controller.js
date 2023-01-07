@@ -12,10 +12,10 @@ class UserController {
         res.json(users.rows)
     }
 
-    async getOneUser(req, res) {
+    async checkOneUser(req, res) {
         const id = req.params.id
-        const users = await db.query('SELECT * FROM person where id = $1', [id])
-        res.json(user.rows[0])
+        const users = await db.query('SELECT * FROM license where user_id = $1', [id])
+        res.json(users.rows)
     }
 
     async updateUser(req, res) {    
@@ -30,7 +30,7 @@ class UserController {
     async deleteUser(req, res) {
         const id = req.params.id
         const users = await db.query('DELETE FROM users where id = $1', [id])
-        //res.json('User with id = $1 deleted', [id])
+        res.status(200).json({ success: true});
         console.log('User with id = $1 deleted', [id])
     }
 }
