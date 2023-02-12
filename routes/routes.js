@@ -1,6 +1,7 @@
 const Router = require('express')
 const licenseController = require('../controller/license.controller')
 const userController = require('../controller/user.controller')
+const mailHandler = require('../controller/mailHandler')
 const router = new Router()
 
 
@@ -18,6 +19,8 @@ router.get('/user', userController.getUsers)
 router.get('/user/:id', userController.checkOneUser)
 router.put('/user', userController.updateUser)
 router.delete('/user/:id', userController.deleteUser)
+
+router.post('/mail', mailHandler.sendMail)
 
 
 module.exports = router
